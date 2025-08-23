@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Notesss</string>
+    <string name="no_notes">No notes yet.\np.s. press the plus button!!!</string>
 </resources>

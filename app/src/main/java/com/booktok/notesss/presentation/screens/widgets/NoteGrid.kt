@@ -1,0 +1,68 @@
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.booktok.notesss.R
+import com.booktok.notesss.domain.Note
+import com.booktok.notesss.presentation.screens.widgets.NoteWidget
+import java.util.Date
+import java.util.GregorianCalendar
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun NoteGrid(notes: List<Note>) {
+    if (notes.isEmpty())
+        Text(
+            text = stringResource(R.string.no_notes),
+            modifier = Modifier.fillMaxSize().wrapContentHeight(),
+            textAlign = TextAlign.Center,
+
+        )
+    else
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2), // 2 колонки
+            modifier = Modifier.padding(5.dp),
+            verticalArrangement = Arrangement.spacedBy(5.dp),
+            horizontalArrangement = Arrangement.spacedBy(5.dp)
+        ) {
+            items(notes){ note ->
+                NoteWidget(note.title, note.content, note.createdAt)
+            }
+        }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun NoteGridPreview(){
+    val calendar = GregorianCalendar()
+    val date : Date = calendar.getTime()
+
+    val notes = List(10) { index ->
+        Note(
+            id = (index + 1).toString(),
+            title = "Note ${index + 1}",
+            content = "This is note number ${index + 1}",
+            createdAt = date,
+            modifiedAt = date
+        )
+    }
+    NoteGrid(notes)
+}
+
+@Preview(showBackground = true)
+@Composable
+fun EmptyNoteGridPreview(){
+    val notes: List<Note> = listOf()
+    NoteGrid(notes)
+}
