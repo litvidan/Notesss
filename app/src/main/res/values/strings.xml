@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Notesss</string>
     <string name="no_notes">No notes yet.\np.s. press the plus button!!!</string>
+    <string name="close_search">Close search\n</string>
+    <string name="search">Search</string>
+    <string name="switch_theme">Switch theme</string>
+    <string name="search_placeholder">\"cake recipe\" for example</string>
+    <string name="add_note">Add note</string>
 </resources>

@@ -25,7 +25,8 @@ import com.booktok.notesss.domain.formatDate
 fun NoteWidget(
     title: String,
     content: String,
-    dateTime: Date
+    dateTime: Date,
+    onClick: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
