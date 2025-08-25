@@ -50,7 +50,7 @@ fun NoteGridPreview(){
 
     val notes = List(10) { index ->
         Note(
-            id = (index + 1).toString(),
+            id = (index + 1),
             title = "Note ${index + 1}",
             content = "This is note number ${index + 1}",
             createdAt = date,

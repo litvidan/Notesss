@@ -6,4 +6,6 @@
     <string name="switch_theme">Switch theme</string>
     <string name="search_placeholder">\"cake recipe\" for example</string>
     <string name="add_note">Add note</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
 </resources>

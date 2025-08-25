@@ -1,15 +1,18 @@
 package com.booktok.notesss.domain
 
+import android.content.Context
+import androidx.compose.ui.res.stringResource
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import com.booktok.notesss.R
 
 
-fun formatDate(date: Date): String {
+fun formatDate(context: Context, date: Date): String {
     return when {
-        isToday(date) -> "Сегодня"
-        isYesterday(date) -> "Вчера"
+        isToday(date) -> context.getString(R.string.today)
+        isYesterday(date) -> context.getString(R.string.yesterday)
         else -> {
             val formatter = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
             formatter.format(date)
@@ -24,7 +27,7 @@ fun isToday(date: Date) : Boolean{
 
 fun isYesterday(date: Date): Boolean {
     val cal = Calendar.getInstance()
-    cal.add(Calendar.DAY_OF_YEAR, -1) // получаем вчерашний день
+    cal.add(Calendar.DAY_OF_YEAR, -1)
     val yesterday = cal.time
     return isSameDay(date, yesterday)
 }
