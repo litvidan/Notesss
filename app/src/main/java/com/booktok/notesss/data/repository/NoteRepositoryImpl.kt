@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class NoteRepositoryImpl(private val dao: NoteDao) : NoteRepository {
-    override suspend fun createNote(note: Note) {
+    override suspend fun insertNote(note: Note) {
         dao.insert(note.toEntity())
     }
 
-    override suspend fun getNote(id: Int) {
-        dao.getById(id)
+    override suspend fun getNote(id: Int) : Note? {
+        return dao.getById(id)?.toDomain()
     }
 
     override suspend fun deleteNote(note: Note) {

@@ -21,7 +21,7 @@ import java.util.Date
 import java.util.GregorianCalendar
 
 @Composable
-fun MainScreen() {
+fun MainScreen(modifier: Modifier) {
     MainScreenView()
 }
 
