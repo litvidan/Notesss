@@ -1,4 +1,8 @@
+package com.booktok.notesss.presentation.screens.widgets
+
+import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -6,6 +10,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.booktok.notesss.R
 import com.booktok.notesss.domain.Note
 import com.booktok.notesss.presentation.screens.widgets.NoteWidget
+import com.booktok.notesss.presentation.ui.theme.NotesssTheme
 import java.util.Date
 import java.util.GregorianCalendar
 
@@ -25,14 +31,20 @@ fun NoteGrid(notes: List<Note>) {
     if (notes.isEmpty())
         Text(
             text = stringResource(R.string.no_notes),
-            modifier = Modifier.fillMaxSize().wrapContentHeight(),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .wrapContentHeight(),
             textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onBackground
 
         )
     else
         LazyVerticalGrid(
             columns = GridCells.Fixed(2), // 2 колонки
-            modifier = Modifier.padding(5.dp),
+            modifier = Modifier
+                .background(MaterialTheme.colorScheme.background)
+                .padding(5.dp),
             verticalArrangement = Arrangement.spacedBy(5.dp),
             horizontalArrangement = Arrangement.spacedBy(5.dp)
         ) {
@@ -42,7 +54,8 @@ fun NoteGrid(notes: List<Note>) {
         }
 }
 
-@Preview(showBackground = true)
+@Preview(name = "Note Grid Light",showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+@Preview(name = "Note Grid Dark", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun NoteGridPreview(){
     val calendar = GregorianCalendar()
@@ -57,12 +70,18 @@ fun NoteGridPreview(){
             modifiedAt = date
         )
     }
-    NoteGrid(notes)
+    NotesssTheme {
+        NoteGrid(notes)
+    }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Composable
-fun EmptyNoteGridPreview(){
+fun EmptyNoteGridPreviewLight(){
     val notes: List<Note> = listOf()
-    NoteGrid(notes)
+
+    NotesssTheme {
+        NoteGrid(notes)
+    }
 }

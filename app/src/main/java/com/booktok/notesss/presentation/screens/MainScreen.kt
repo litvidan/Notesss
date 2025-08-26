@@ -1,6 +1,8 @@
 package com.booktok.notesss.presentation.screens
 
-import NoteGrid
+import com.booktok.notesss.presentation.screens.widgets.NoteGrid
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -66,7 +68,8 @@ fun MainScreenView(){
 
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(name = "", showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_YES)
+@Preview(showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_NO)
 @Composable
 fun MainScreenPreview(){
     MainScreenView()
