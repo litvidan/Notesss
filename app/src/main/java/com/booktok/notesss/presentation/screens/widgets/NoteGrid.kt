@@ -27,7 +27,10 @@ import java.util.GregorianCalendar
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun NoteGrid(notes: List<Note>) {
+fun NoteGrid(
+    notes: List<Note>,
+    onInsert: (Int?) -> (Unit) = {}
+) {
     if (notes.isEmpty())
         Text(
             text = stringResource(R.string.no_notes),
@@ -49,7 +52,13 @@ fun NoteGrid(notes: List<Note>) {
             horizontalArrangement = Arrangement.spacedBy(5.dp)
         ) {
             items(notes){ note ->
-                NoteWidget(note.title, note.content, note.createdAt)
+                NoteWidget(
+                    note.title,
+                    note.content,
+                    note.createdAt,
+                    onClick = {
+                        onInsert(note.id)
+                    })
             }
         }
 }
@@ -58,8 +67,7 @@ fun NoteGrid(notes: List<Note>) {
 @Preview(name = "Note Grid Dark", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun NoteGridPreview(){
-    val calendar = GregorianCalendar()
-    val date : Date = calendar.getTime()
+    val date : Date = Date()
 
     val notes = List(10) { index ->
         Note(

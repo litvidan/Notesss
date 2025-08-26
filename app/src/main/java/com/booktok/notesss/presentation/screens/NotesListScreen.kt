@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,12 +24,12 @@ import java.util.Date
 import java.util.GregorianCalendar
 
 @Composable
-fun MainScreen(modifier: Modifier) {
-    MainScreenView()
+fun NotesListScreen(onInsert: (Int?) -> Unit) {
+    NotesListScreenView(onInsert)
 }
 
 @Composable
-fun MainScreenView(){
+fun NotesListScreenView(onInsert: (Int?) -> Unit){
 
     val calendar = GregorianCalendar()
     val date : Date = calendar.getTime()
@@ -46,16 +47,17 @@ fun MainScreenView(){
         Column{
             TopBar(
                 isDarkTheme = false,
-                onToggleTheme = {},
+                onToggleTheme = {  },
                 onSearchQueryChange = {}
             )
             NoteGrid(
-                notes = notes
+                notes = notes,
+                onInsert = onInsert
             )
         }
         FloatingActionButton(
             onClick = {
-                // Add logic
+                onInsert(null)
             },
             modifier = Modifier
                 .align(Alignment.BottomEnd)
@@ -71,6 +73,8 @@ fun MainScreenView(){
 @Preview(name = "", showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_YES)
 @Preview(showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_NO)
 @Composable
-fun MainScreenPreview(){
-    MainScreenView()
+fun NotesListScreenPreview(){
+    NotesListScreenView(){
+
+    }
 }

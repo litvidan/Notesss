@@ -2,6 +2,7 @@ package com.booktok.notesss.presentation.screens.widgets
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -36,7 +37,8 @@ fun NoteWidget(
             .width(200.dp)
             .height(200.dp)
             .background(MaterialTheme.colorScheme.secondary, RoundedCornerShape(16.dp))
-            .padding(10.dp),
+            .padding(10.dp)
+            .clickable{onClick()},
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
