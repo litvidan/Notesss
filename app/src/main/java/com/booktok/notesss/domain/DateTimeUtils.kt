@@ -1,7 +1,6 @@
 package com.booktok.notesss.domain
 
 import android.content.Context
-import androidx.compose.ui.res.stringResource
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -18,6 +17,14 @@ fun formatDate(context: Context, date: Date): String {
             formatter.format(date)
         }
     }
+}
+
+fun formatTime(date: Date): String{
+    val hours = date.hours
+    val minutes = date.minutes
+
+    if(minutes < 10) return "${hours}:0${minutes}"
+    else return "${hours}:${minutes}"
 }
 
 fun isToday(date: Date) : Boolean{

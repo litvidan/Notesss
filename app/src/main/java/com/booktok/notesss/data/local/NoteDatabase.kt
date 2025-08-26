@@ -5,8 +5,8 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.booktok.notesss.domain.Note
 
-@Database(entities = [Note::class], version = 1)
+@Database(entities = [NoteEntity::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class NoteDatabase : RoomDatabase(){
-    abstract fun noteDao()
+    abstract fun noteDao() : NoteDao
 }

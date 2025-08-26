@@ -99,7 +99,7 @@ fun SearchTextField(
         modifier = Modifier.background(Color.Black, RoundedCornerShape(5.dp)).fillMaxWidth(),
         trailingIcon = {
             IconButton(onClick = onClose) {
-                Icon(Icons.Filled.Close, contentDescription = "Закрыть поиск")
+                Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.close_search))
             }
         }
     )
