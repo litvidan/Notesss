@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
@@ -23,8 +24,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.disableHotReloadMode
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -51,6 +55,7 @@ fun NoteDetailScreen(
     val content = viewModel.content.value
     val createdAt = viewModel.createdAt
     val modifiedAt = viewModel.modifiedAt
+    val saved = viewModel.saved.value
 
     val onContentChange : (String) -> Unit = { text ->
         viewModel.onEvent(NoteDetailEvent.ContentChanged(text))
@@ -65,10 +70,23 @@ fun NoteDetailScreen(
             FloatingActionButton(
                 onClick = {
                     viewModel.onEvent(NoteDetailEvent.SaveNote)
-                }
+                },
+                containerColor = if(saved) Color.Green else MaterialTheme.colorScheme.primary
             ) {
-                Icon(imageVector = Icons.Default.Check, contentDescription = stringResource(R.string.save_note))
+                if(saved)
+                    Icon(
+                        imageVector = Icons.Default.Check,
+                        contentDescription = stringResource(R.string.note_saved),
+                        modifier = Modifier.size(24.dp)
+                    )
+                else
+                    Icon(
+                        painter = painterResource(R.drawable.diskette),
+                        contentDescription = stringResource(R.string.save_note),
+                        modifier = Modifier.size(24.dp)
+                    )
             }
+
         }
     ) {
         Column(modifier = Modifier
@@ -80,6 +98,7 @@ fun NoteDetailScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 IconButton(onClick = {
+                    viewModel.onEvent(NoteDetailEvent.SaveNote)
                     onBack()
                 }) {
                     Icon(

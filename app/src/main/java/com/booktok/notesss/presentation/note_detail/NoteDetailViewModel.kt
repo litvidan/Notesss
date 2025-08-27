@@ -23,6 +23,7 @@ class NoteDetailViewModel @Inject constructor(
     private val noteUseCases: NoteUseCases
 ): ViewModel(){
     private val _noteId = MutableStateFlow<Long?>(null)
+
     private val _title = mutableStateOf(NoteTextFieldState(
         placeholder = "Title here"
     ))
@@ -36,6 +37,9 @@ class NoteDetailViewModel @Inject constructor(
     var createdAt: Date? = null
     var modifiedAt: Date? = null
 
+    private val _saved = mutableStateOf(true)
+    val saved: State<Boolean> = _saved
+
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
@@ -45,11 +49,14 @@ class NoteDetailViewModel @Inject constructor(
                 _title.value = title.value.copy(
                     text = event.text
                 )
+                _saved.value = false
+
             }
             is NoteDetailEvent.ContentChanged -> {
                 _content.value = content.value.copy(
                     text = event.text
                 )
+                _saved.value = false
             }
 
             is NoteDetailEvent.SaveNote -> {
@@ -61,8 +68,10 @@ class NoteDetailViewModel @Inject constructor(
                         createdAt = Date(),
                         modifiedAt = null // TODO("Implement logic of this later")
                     ))
+                    _saved.value = true
                     _eventFlow.emit(UiEvent.SaveNote)
                 }
+                
             }
 
             NoteDetailEvent.DeleteNote -> {
