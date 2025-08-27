@@ -1,8 +1,7 @@
-package com.booktok.notesss.presentation.screens.widgets
+package com.booktok.notesss.presentation.notes_list.widgets
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons

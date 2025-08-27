@@ -1,4 +1,4 @@
-package com.booktok.notesss.presentation.screens
+package com.booktok.notesss.presentation.note_detail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,8 +27,7 @@ import com.booktok.notesss.R
 import com.booktok.notesss.domain.Note
 import com.booktok.notesss.domain.formatDate
 import com.booktok.notesss.domain.formatTime
-import com.booktok.notesss.presentation.screens.widgets.NotesssTextField
-import java.util.Date
+import com.booktok.notesss.presentation.note_detail.widgets.NotesssTextField
 
 
 @Composable

@@ -1,4 +1,4 @@
-package com.booktok.notesss.presentation.screens.widgets
+package com.booktok.notesss.presentation.notes_list.widgets
 
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -20,10 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.booktok.notesss.R
 import com.booktok.notesss.domain.Note
-import com.booktok.notesss.presentation.screens.widgets.NoteWidget
 import com.booktok.notesss.presentation.ui.theme.NotesssTheme
 import java.util.Date
-import java.util.GregorianCalendar
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

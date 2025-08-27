@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.booktok.notesss.presentation.navigation.Navigation
-import com.booktok.notesss.presentation.screens.NotesListScreen
 import com.booktok.notesss.presentation.ui.theme.NotesssTheme
 
 class MainActivity : ComponentActivity() {

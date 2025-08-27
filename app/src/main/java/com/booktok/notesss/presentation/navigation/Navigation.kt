@@ -7,15 +7,20 @@ import androidx.navigation3.runtime.entry
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.booktok.notesss.presentation.screens.NoteDetailScreen
-import com.booktok.notesss.presentation.screens.NotesListScreen
+import com.booktok.notesss.presentation.note_detail.NoteDetailScreen
+import com.booktok.notesss.presentation.notes_list.NotesListScreen
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.safeDrawing
 
 @Composable
 fun Navigation(){
     val backStack = rememberNavBackStack<Screen>(Screen.NotesList)
 
     NavDisplay(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .windowInsetsPadding(WindowInsets.safeDrawing),
         backStack = backStack,
         onBack = {
             backStack.removeLastOrNull()

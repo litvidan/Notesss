@@ -1,4 +1,4 @@
-package com.booktok.notesss.presentation.screens.widgets
+package com.booktok.notesss.presentation.note_detail.widgets
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
