@@ -1,8 +1,8 @@
 package com.booktok.notesss.presentation.notes_list
 
-import com.booktok.notesss.presentation.notes_list.widgets.NoteGrid
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.annotation.SuppressLint
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -11,37 +11,34 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.booktok.notesss.R
+import com.booktok.notesss.data.mock.NoteRepositoryMockImpl
 import com.booktok.notesss.domain.model.Note
+import com.booktok.notesss.domain.repository.NoteRepository
+import com.booktok.notesss.presentation.notes_list.widgets.NoteGrid
 import com.booktok.notesss.presentation.notes_list.widgets.TopBar
-import java.util.Date
-import java.util.GregorianCalendar
+import com.booktok.notesss.presentation.ui.theme.NotesssTheme
 
+@SuppressLint("ViewModelConstructorInComposable")
 @Composable
-fun NotesListScreen(onInsert: (Int?) -> Unit) {
-    NotesListScreenView(onInsert)
+fun NotesListScreen(
+    noteRepository: NoteRepository,
+    onInsert: (Int?) -> Unit
+) {
+    val notesListViewModel = NotesListViewModel(noteRepository)
+
+
+    NotesListScreenView(onInsert, notesListViewModel.notes.collectAsState().value)
 }
 
 @Composable
-fun NotesListScreenView(onInsert: (Int?) -> Unit){
-
-    val calendar = GregorianCalendar()
-    val date : Date = calendar.getTime()
-    val notes = List(10) { index ->
-        Note(
-            id = (index + 1),
-            title = "Note ${index + 1}",
-            content = "This is note number ${index + 1}",
-            createdAt = date,
-            modifiedAt = date
-        )
-    }
-
+fun NotesListScreenView(onInsert: (Int?) -> Unit, notes: List<Note>){
     Box{
         Column{
             TopBar(
@@ -69,11 +66,18 @@ fun NotesListScreenView(onInsert: (Int?) -> Unit){
 
 }
 
+@SuppressLint("ViewModelConstructorInComposable")
 @Preview(name = "", showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_YES)
 @Preview(showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_NO)
 @Composable
 fun NotesListScreenPreview(){
-    NotesListScreenView(){
-
+    val noteRepository = NoteRepositoryMockImpl()
+    val notesListViewModel = NotesListViewModel(noteRepository)
+    NotesssTheme {
+        NotesListScreenView(
+            notes = notesListViewModel.notes.collectAsState().value,
+            onInsert = {}
+        )
     }
+
 }

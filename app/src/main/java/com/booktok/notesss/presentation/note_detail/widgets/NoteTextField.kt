@@ -13,7 +13,8 @@ fun NotesssTextField(
     value: String,
     onValueChange: (String) -> Unit,
     placeholder: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    maxLines: Int = Int.MAX_VALUE
 ) {
     val colors = TextFieldDefaults.colors(
         focusedContainerColor = MaterialTheme.colorScheme.background,
@@ -27,7 +28,7 @@ fun NotesssTextField(
         onValueChange = onValueChange,
         modifier = modifier,
         placeholder = { Text(placeholder) },
-        colors = colors
-
+        colors = colors,
+        maxLines = maxLines
     )
 }

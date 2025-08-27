@@ -20,7 +20,7 @@ class GetNotes(
                     when(notesOrder){
                         is NotesOrder.ByTitle -> notes.sortedBy { it.title.lowercase() }
                         is NotesOrder.ByCreationDate -> notes.sortedBy { it.createdAt.time }
-                        is NotesOrder.ByModificationDate -> notes.sortedBy { it.modifiedAt.time }
+                        is NotesOrder.ByModificationDate -> notes.sortedBy { it.modifiedAt?.time }
                         is NotesOrder.BySearchQuery -> {
                             //TODO("Implement search ability")
                             notes
@@ -32,7 +32,7 @@ class GetNotes(
                     when(notesOrder){
                         is NotesOrder.ByTitle -> notes.sortedByDescending { it.title.lowercase() }
                         is NotesOrder.ByCreationDate -> notes.sortedByDescending { it.createdAt.time }
-                        is NotesOrder.ByModificationDate -> notes.sortedByDescending { it.modifiedAt.time }
+                        is NotesOrder.ByModificationDate -> notes.sortedByDescending { it.modifiedAt?.time }
                         is NotesOrder.BySearchQuery -> {
                             //TODO("Implement search ability")
                             notes

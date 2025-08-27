@@ -12,9 +12,12 @@ import com.booktok.notesss.presentation.notes_list.NotesListScreen
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.safeDrawing
+import com.booktok.notesss.domain.repository.NoteRepository
 
 @Composable
-fun Navigation(){
+fun Navigation(
+    noteRepository: NoteRepository
+){
     val backStack = rememberNavBackStack<Screen>(Screen.NotesList)
 
     NavDisplay(
@@ -28,15 +31,18 @@ fun Navigation(){
         entryProvider = entryProvider {
             entry<Screen.NotesList>{
                 NotesListScreen(
+                    noteRepository = noteRepository,
                     onInsert = { id ->
                         backStack.add(Screen.NoteDetail(id))
                     }
                 )
             }
             entry<Screen.NoteDetail>{ key ->
-                NoteDetailScreen(key.id){
-                    backStack.removeLastOrNull()
-                }
+                NoteDetailScreen(
+                    noteRepository = noteRepository,
+                    noteId = key.id,
+                    onBack = { backStack.removeLastOrNull()}
+                )
             }
         }
     )

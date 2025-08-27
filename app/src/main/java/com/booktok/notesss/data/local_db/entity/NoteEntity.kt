@@ -11,5 +11,5 @@ data class NoteEntity(
     var title: String,
     var content: String,
     var createdAt: Date,
-    var modifiedAt: Date
+    var modifiedAt: Date?
 )
