@@ -8,7 +8,9 @@ import com.booktok.notesss.data.local_db.repository.NoteRepositoryImpl
 import com.booktok.notesss.data.mock.NoteRepositoryMockImpl
 import com.booktok.notesss.presentation.navigation.Navigation
 import com.booktok.notesss.presentation.ui.theme.NotesssTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

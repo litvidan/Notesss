@@ -7,7 +7,7 @@ import java.util.Date
 @Entity(tableName = "notes")
 data class NoteEntity(
     @PrimaryKey(autoGenerate = true)
-    var id: Int?,
+    var id: Long?,
     var title: String,
     var content: String,
     var createdAt: Date,

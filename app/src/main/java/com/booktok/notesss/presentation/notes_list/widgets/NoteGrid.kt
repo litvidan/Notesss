@@ -27,7 +27,7 @@ import java.util.Date
 @Composable
 fun NoteGrid(
     notes: List<Note>,
-    onInsert: (Int?) -> (Unit) = {}
+    onInsert: (Long?) -> (Unit) = {}
 ) {
     if (notes.isEmpty())
         Text(
@@ -69,7 +69,7 @@ fun NoteGridPreview(){
 
     val notes = List(10) { index ->
         Note(
-            id = (index + 1),
+            id = ((index + 1).toLong()),
             title = "Note ${index + 1}",
             content = "This is note number ${index + 1}",
             createdAt = date,

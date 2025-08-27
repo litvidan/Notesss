@@ -41,8 +41,8 @@ class NoteRepositoryMockImpl: NoteRepository {
         ),
     )
 
-    override suspend fun insertNote(note: Note) {
-        if(note.title == "" && note.content == "") return
+    override suspend fun insertNote(note: Note) : Long{
+        if(note.title == "" && note.content == "") return -1
 
         val index = notes.indexOfFirst { it.id == note.id }
         if (index >= 0) {
@@ -50,9 +50,11 @@ class NoteRepositoryMockImpl: NoteRepository {
         } else {
             notes.add(note)
         }
+
+        return note.id?.toLong() ?: -1
     }
 
-    override suspend fun getNote(id: Int): Note? {
+    override suspend fun getNote(id: Long): Note? {
         return notes.firstOrNull{it.id == id}
     }
 

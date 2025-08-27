@@ -31,7 +31,6 @@ fun Navigation(
         entryProvider = entryProvider {
             entry<Screen.NotesList>{
                 NotesListScreen(
-                    noteRepository = noteRepository,
                     onInsert = { id ->
                         backStack.add(Screen.NoteDetail(id))
                     }
@@ -39,9 +38,8 @@ fun Navigation(
             }
             entry<Screen.NoteDetail>{ key ->
                 NoteDetailScreen(
-                    noteRepository = noteRepository,
-                    noteId = key.id,
-                    onBack = { backStack.removeLastOrNull()}
+                    onBack = { backStack.removeLastOrNull()},
+                    noteId = key.id
                 )
             }
         }
