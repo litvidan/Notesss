@@ -6,6 +6,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 
 
 @Composable
@@ -14,7 +15,8 @@ fun NotesssTextField(
     onValueChange: (String) -> Unit,
     placeholder: String,
     modifier: Modifier = Modifier,
-    maxLines: Int = Int.MAX_VALUE
+    maxLines: Int = Int.MAX_VALUE,
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium
 ) {
     val colors = TextFieldDefaults.colors(
         focusedContainerColor = MaterialTheme.colorScheme.background,
@@ -29,6 +31,7 @@ fun NotesssTextField(
         modifier = modifier,
         placeholder = { Text(placeholder) },
         colors = colors,
-        maxLines = maxLines
+        maxLines = maxLines,
+        textStyle = textStyle
     )
 }

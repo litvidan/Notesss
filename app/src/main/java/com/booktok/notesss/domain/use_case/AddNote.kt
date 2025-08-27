@@ -7,6 +7,6 @@ class AddNote(
     private val repository: NoteRepository
 ) {
     suspend operator fun invoke(note: Note){
-        repository.insertNote(note)
+        if(note.title != "" || note.content != "") repository.insertNote(note)
     }
 }

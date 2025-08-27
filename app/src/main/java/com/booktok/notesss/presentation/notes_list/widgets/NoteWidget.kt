@@ -42,19 +42,21 @@ fun NoteWidget(
     ) {
         Text(
             text = title,
+            style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.ExtraBold,
-            fontSize = 25.sp,
             color = MaterialTheme.colorScheme.onSecondary
         )
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(15.dp))
         Text(
             text = content,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.weight(1f),
+            style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSecondary
         )
         Text(
             text = formatDate(LocalContext.current, dateTime),
+            style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.onSecondary
         )
 

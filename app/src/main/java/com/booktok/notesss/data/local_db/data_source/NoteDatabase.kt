@@ -9,5 +9,9 @@ import com.booktok.notesss.data.local_db.util.Converters
 @Database(entities = [NoteEntity::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class NoteDatabase : RoomDatabase(){
-    abstract fun noteDao() : NoteDao
+    abstract val noteDao: NoteDao
+
+    companion object{
+        const val DB_NAME = "notesss_db"
+    }
 }

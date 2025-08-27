@@ -106,7 +106,8 @@ fun NoteDetailScreenView(
             onValueChange = onTitleChange,
             placeholder = stringResource(R.string.title),
             modifier = Modifier.fillMaxWidth(),
-            maxLines = 1
+            maxLines = 1,
+            textStyle = MaterialTheme.typography.titleLarge
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -117,7 +118,8 @@ fun NoteDetailScreenView(
             placeholder = stringResource(R.string.content),
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(min = 200.dp)
+                .heightIn(min = 200.dp),
+            textStyle = MaterialTheme.typography.bodyMedium
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -142,7 +144,7 @@ fun NoteDetailScreenView(
 @Composable
 fun NoteDetailScreenPreview(){
     val noteRepository = NoteRepositoryMockImpl()
-    val noteId = null
+    val noteId = 1
 
 
     MaterialTheme {
