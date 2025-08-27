@@ -21,7 +21,6 @@ class NoteDetailViewModel(
     private val repository: NoteRepository,
     noteId: Int?
 ) : ViewModel() {
-
     private val _note = MutableStateFlow(
         Note(
             id = 0,
@@ -32,6 +31,8 @@ class NoteDetailViewModel(
         )
     )
     val note: StateFlow<Note> = _note
+
+
 
     init {
         viewModelScope.launch {
