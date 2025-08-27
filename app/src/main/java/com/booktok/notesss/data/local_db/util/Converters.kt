@@ -1,4 +1,4 @@
-package com.booktok.notesss.data.local
+package com.booktok.notesss.data.local_db.util
 
 import androidx.room.TypeConverter
 import java.util.Date

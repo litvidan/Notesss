@@ -1,5 +1,6 @@
-package com.booktok.notesss.domain
+package com.booktok.notesss.domain.repository
 
+import com.booktok.notesss.domain.model.Note
 import kotlinx.coroutines.flow.Flow
 
 // This is for CRUD operations

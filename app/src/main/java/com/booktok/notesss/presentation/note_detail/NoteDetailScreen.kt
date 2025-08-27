@@ -24,9 +24,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.booktok.notesss.R
-import com.booktok.notesss.domain.Note
-import com.booktok.notesss.domain.formatDate
-import com.booktok.notesss.domain.formatTime
+import com.booktok.notesss.domain.model.Note
+import com.booktok.notesss.presentation.util.formatDate
+import com.booktok.notesss.presentation.util.formatTime
 import com.booktok.notesss.presentation.note_detail.widgets.NotesssTextField
 
 

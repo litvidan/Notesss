@@ -17,7 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.booktok.notesss.R
-import com.booktok.notesss.domain.Note
+import com.booktok.notesss.domain.model.Note
 import com.booktok.notesss.presentation.notes_list.widgets.TopBar
 import java.util.Date
 import java.util.GregorianCalendar

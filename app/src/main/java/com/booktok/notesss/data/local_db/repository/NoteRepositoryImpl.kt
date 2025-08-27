@@ -1,8 +1,8 @@
-package com.booktok.notesss.data.repository
+package com.booktok.notesss.data.local_db.repository
 
-import com.booktok.notesss.data.local.NoteDao
-import com.booktok.notesss.domain.Note
-import com.booktok.notesss.domain.NoteRepository
+import com.booktok.notesss.data.local_db.data_source.NoteDao
+import com.booktok.notesss.domain.model.Note
+import com.booktok.notesss.domain.repository.NoteRepository
 import com.booktok.notesss.domain.toDomain
 import com.booktok.notesss.domain.toEntity
 import kotlinx.coroutines.flow.Flow

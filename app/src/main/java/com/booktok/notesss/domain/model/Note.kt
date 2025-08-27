@@ -1,4 +1,4 @@
-package com.booktok.notesss.domain
+package com.booktok.notesss.domain.model
 
 import java.util.Date
 

@@ -1,10 +1,11 @@
-package com.booktok.notesss.data.local
+package com.booktok.notesss.data.local_db.data_source
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.booktok.notesss.data.local_db.entity.NoteEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

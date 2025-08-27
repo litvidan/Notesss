@@ -1,4 +1,4 @@
-package com.booktok.notesss.domain
+package com.booktok.notesss.presentation.util
 
 import android.content.Context
 import java.text.SimpleDateFormat

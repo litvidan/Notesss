@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.booktok.notesss.R
-import com.booktok.notesss.domain.Note
+import com.booktok.notesss.domain.model.Note
 import com.booktok.notesss.presentation.ui.theme.NotesssTheme
 import java.util.Date
 

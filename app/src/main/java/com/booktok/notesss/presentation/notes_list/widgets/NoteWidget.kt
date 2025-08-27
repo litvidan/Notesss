@@ -20,7 +20,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.booktok.notesss.domain.formatDate
+import com.booktok.notesss.presentation.util.formatDate
 import com.booktok.notesss.presentation.ui.theme.NotesssTheme
 import java.util.Date
 
